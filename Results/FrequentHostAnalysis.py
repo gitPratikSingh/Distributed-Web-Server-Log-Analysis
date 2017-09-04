@@ -13,5 +13,7 @@ def frequentHost(accessLogs):
                 .map(lambda x:(x.host,1))
                 .reduceByKey(lambda x,y:x+y)
                 .cache())
-  print 'The top 20 most frequent hosts are %s,total URI requests sent: %d' %()
+  for host, count in frequentHosts.takeOrdered(20, key=lambda x:-x[1]):
+    print 'The top 20 most frequent hosts are %s, total URI requests sent: %d' %(host, count)
+    
   frequentHosts.saveAsTextFile('hdfs://my-node:9000/Distributed-Web-Server-Analysis/FrequentHostAnalysis.txt')
