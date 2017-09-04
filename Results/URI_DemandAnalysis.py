@@ -16,6 +16,6 @@ def URIDemandAnalysis(accessLogs):
     print 'URI %s : Count %d' %(URI, count)
   
   """Save the RDD in a file"""
-  responseCodeToCount.saveAsTextFile('hdfs://my-node:9000/URI_DemandAnalysis.txt')
+  URICount.saveAsTextFile('hdfs://my-node:9000/URI_DemandAnalysis.txt')
   
   
